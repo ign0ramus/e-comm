@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import FormInput from '../FormInput/FormInput.component';
-import './SignIn.styles.scss';
 import Button from '../Button/Button.component';
+import { signInWithGoogle } from '../../firebase/firebase.utils';
+import './SignIn.styles.scss';
 
 class SignIn extends Component {
 	state = {
@@ -16,6 +17,11 @@ class SignIn extends Component {
 	handleChange = (e) => {
 		const { value, name } = e.target;
 		this.setState({ [name]: value });
+	};
+
+	handleSumbitWithGoogle = (e) => {
+		e.preventDefault();
+		signInWithGoogle();
 	};
 
 	render() {
@@ -43,7 +49,12 @@ class SignIn extends Component {
 						required
 						label='Password'
 					/>
-					<Button type='submit'>Sign in</Button>
+					<div className='btn-container'>
+						<Button type='submit'>Sign in</Button>
+						<Button isGoogle onClick={this.handleSumbitWithGoogle}>
+							Sign in with Google
+						</Button>
+					</div>
 				</form>
 			</div>
 		);
