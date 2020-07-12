@@ -1,3 +1,14 @@
+@mixin invertedBtn {
+	background-color: #fff;
+	color: #000;
+	border: 1px solid black;
+}
+
+@mixin normalBtn {
+	background-color: #000;
+	color: #fff;
+}
+
 .button {
 	min-width: 165px;
 	width: auto;
@@ -6,18 +17,17 @@
 	line-height: 50px;
 	padding: 0 35px 0 35px;
 	font-size: 15px;
-	background-color: black;
-	color: white;
 	text-transform: uppercase;
 	font-family: 'Open Sans Condensed';
 	font-weight: bolder;
 	border: none;
 	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	@include normalBtn();
 
 	&:hover {
-		background-color: white;
-		color: black;
-		border: 1px solid black;
+		@include invertedBtn();
 	}
 
 	&.google {
@@ -27,6 +37,14 @@
 		&:hover {
 			background-color: #357ae8;
 			border: none;
+		}
+	}
+
+	&.inverted {
+		@include invertedBtn();
+
+		&:hover {
+			@include normalBtn();
 		}
 	}
 }
