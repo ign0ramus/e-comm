@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
 
 import Home from './pages/Home/Home.component';
 import Shop from './pages/Shop/Shop.components';
@@ -8,6 +9,7 @@ import Header from './components/Header/Header.component';
 import Auth from './pages/Auth/Auth.component';
 import { auth, createUserProfileDoc } from './firebase/firebase.utils';
 import { setUser } from './redux/user/userActions';
+import { selectUser } from './redux/user/userSelectors';
 import './App.css';
 
 class App extends Component {
@@ -56,8 +58,8 @@ class App extends Component {
 	}
 }
 
-const mapStateToProps = (state) => ({
-	user: state.user.user,
+const mapStateToProps = createStructuredSelector({
+	user: selectUser,
 });
 
 const mapDispatchToProps = (dispatch) => ({
