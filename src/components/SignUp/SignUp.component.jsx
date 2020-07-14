@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
+
 import { auth, createUserProfileDoc } from '../../firebase/firebase.utils';
 import FormInput from '../FormInput/FormInput.component';
 import Button from '../Button/Button.component';
-import './SignUp.styles.scss';
+
+const SignUpContainer = styled.div`
+	max-width: 380px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+`;
+
+const Title = styled.h2`
+	margin: 10px 0;
+`;
 
 const getInitialState = () => ({
 	displayName: '',
@@ -36,10 +48,10 @@ class SignUp extends Component {
 	render() {
 		const { displayName, email, password } = this.state;
 		return (
-			<div className='sign-up'>
-				<h2 className='title'>I do not have an account</h2>
+			<SignUpContainer>
+				<Title>I do not have an account</Title>
 				<span>Sign up with your email and password</span>
-				<form className='sign-up-form' onSubmit={this.handleSubmit}>
+				<form onSubmit={this.handleSubmit}>
 					<FormInput
 						type='text'
 						name='displayName'
@@ -66,7 +78,7 @@ class SignUp extends Component {
 					/>
 					<Button type='submit'>SIGN UP</Button>
 				</form>
-			</div>
+			</SignUpContainer>
 		);
 	}
 }

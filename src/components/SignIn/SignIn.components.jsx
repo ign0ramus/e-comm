@@ -1,8 +1,26 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
+
 import FormInput from '../FormInput/FormInput.component';
 import Button from '../Button/Button.component';
 import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
-import './SignIn.styles.scss';
+
+const SignInContainer = styled.div`
+	max-width: 380px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 30px;
+`;
+
+const Title = styled.h1`
+	margin: 10px 0;
+`;
+
+const BtnContainer = styled.div`
+	display: flex;
+	justify-content: space-between;
+`;
 
 class SignIn extends Component {
 	state = {
@@ -39,8 +57,8 @@ class SignIn extends Component {
 		const { email, password } = this.state;
 
 		return (
-			<div className='sign-in'>
-				<h2 className='title'>I already have an account</h2>
+			<SignInContainer>
+				<Title>I already have an account</Title>
 				<span>Sign in with your email and password</span>
 
 				<form onSubmit={this.handleSubmit}>
@@ -60,14 +78,14 @@ class SignIn extends Component {
 						required
 						label='Password'
 					/>
-					<div className='btn-container'>
+					<BtnContainer>
 						<Button type='submit'>Sign in</Button>
 						<Button isGoogle onClick={this.handleSumbitWithGoogle}>
 							Sign in with Google
 						</Button>
-					</div>
+					</BtnContainer>
 				</form>
-			</div>
+			</SignInContainer>
 		);
 	}
 }

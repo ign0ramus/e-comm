@@ -2,18 +2,6 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 
 const normalButtonStyles = css`
-	background-color: #fff;
-	color: #000;
-	border: none;
-
-	&:hover {
-		background-color: #000;
-		color: #fff;
-		border: 1px solid black;
-	}
-`;
-
-const invertedButtonStyles = css`
 	background-color: #000;
 	color: #fff;
 	border: 1px solid black;
@@ -22,6 +10,18 @@ const invertedButtonStyles = css`
 		background-color: #fff;
 		color: #000;
 		border: none;
+	}
+`;
+
+const invertedButtonStyles = css`
+	background-color: #fff;
+	color: #000;
+	border: none;
+
+	&:hover {
+		background-color: #000;
+		color: #fff;
+		border: 1px solid black;
 	}
 `;
 
