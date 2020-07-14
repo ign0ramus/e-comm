@@ -1,22 +1,42 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { selectCollection } from '../../redux/shop/shopSelectors';
+import styled from 'styled-components';
 
-import './Collection.styles.scss';
+import { selectCollection } from '../../redux/shop/shopSelectors';
 import CollectionItem from '../../components/CollectionItem/CollectionItem.component';
+
+const StyledCollectionItem = styled(CollectionItem)`
+	margin-bottom: 30px;
+`;
+
+const CollectionContainer = styled.div`
+	display: flex;
+	flex-direction: column;
+`;
+
+const Title = styled.h2`
+	font-size: 38px;
+	margin: 0 auto 30px;
+`;
+
+const Items = styled.div`
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-gap: 10px;
+`;
 
 const Collection = ({ collection }) => {
 	const { title, items } = collection;
 
 	return (
-		<div className='collection'>
-			<h2 className='title'>{title}</h2>
-			<div className='items'>
+		<CollectionContainer>
+			<Title>{title}</Title>
+			<Items>
 				{items.map((item) => (
-					<CollectionItem key={item.id} item={item} />
+					<StyledCollectionItem key={item.id} item={item} />
 				))}
-			</div>
-		</div>
+			</Items>
+		</CollectionContainer>
 	);
 };
 
