@@ -66,7 +66,7 @@ const CollectionItem = ({ item, addItemToCart }) => {
 			<Image src={imageUrl} alt={name} />
 			<Footer>
 				<Name>{name}</Name>
-				<Price>{price}</Price>
+				<Price>${price}</Price>
 			</Footer>
 			<StyledButton onClick={() => addItemToCart(item)} inverted>
 				ADD TO CART

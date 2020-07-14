@@ -64,6 +64,19 @@ export const convertCollectionsSnapshotToMap = (collections) => {
 	}, {});
 };
 
+export const convertDirectoriesSnapshotToArray = (directories) => {
+	const transformedDirectories = directories.docs.map((doc) => {
+		const { title, imageUrl } = doc.data();
+		return {
+			title,
+			imageUrl,
+			linkUrl: encodeURI(title.toLowerCase()),
+			id: doc.id,
+		};
+	});
+	return transformedDirectories;
+};
+
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 

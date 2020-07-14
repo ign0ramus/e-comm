@@ -76,7 +76,7 @@ const MenuItem = ({ title, imageUrl, size, linkUrl, match }) => (
 	<MenuItemContainer
 		size={size}
 		background={imageUrl}
-		to={`${match.url}${linkUrl}`}
+		to={`${match.url}shop/${linkUrl}`}
 	>
 		<Content>
 			<Title>{title}</Title>

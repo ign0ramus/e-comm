@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
-import Directory from '../../components/Directory/Directory.component';
+import DirectoryContainer from '../../components/Directory/Directory.container';
+import { fetchDirectoriesAsync } from '../../redux/directory/directoryActions';
 
 const HomepageContainer = styled.div`
 	display: flex;
@@ -9,10 +11,22 @@ const HomepageContainer = styled.div`
 	align-items: center;
 `;
 
-const Home = () => (
-	<HomepageContainer>
-		<Directory />
-	</HomepageContainer>
-);
+class Home extends Component {
+	componentDidMount() {
+		this.props.fetchDirectories();
+	}
 
-export default Home;
+	render() {
+		return (
+			<HomepageContainer>
+				<DirectoryContainer />
+			</HomepageContainer>
+		);
+	}
+}
+
+const mapDispatchToProps = (dispatch) => ({
+	fetchDirectories: () => dispatch(fetchDirectoriesAsync()),
+});
+
+export default connect(null, mapDispatchToProps)(Home);
