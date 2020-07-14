@@ -24,16 +24,14 @@ class Shop extends Component {
 
 	componentDidMount() {
 		const { updateCollections } = this.props;
-
 		const collectionRef = firestore.collection('collections');
-		collectionRef.onSnapshot(async (snapshot) => {
-			const collections = await convertCollectionsSnapshotToMap(snapshot);
+
+		collectionRef.get().then((snapshot) => {
+			const collections = convertCollectionsSnapshotToMap(snapshot);
 			updateCollections(collections);
 			this.setState({ isLoading: false });
 		});
 	}
-
-	componentWillUnmount() {}
 
 	render() {
 		const { match } = this.props;
