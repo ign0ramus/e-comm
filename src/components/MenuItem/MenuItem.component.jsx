@@ -25,7 +25,7 @@ const MenuItemContainer = styled(Link)`
 			return '380px';
 		}
 	}};
-	background-image: ${({ imageUrl }) => `url(${imageUrl})`};
+	background-image: url(${({ background }) => background});
 	flex: 1 1 auto;
 	display: flex;
 	align-items: center;
@@ -75,7 +75,7 @@ const Subtitle = styled.span`
 const MenuItem = ({ title, imageUrl, size, linkUrl, match }) => (
 	<MenuItemContainer
 		size={size}
-		imageUrl={imageUrl}
+		background={imageUrl}
 		to={`${match.url}${linkUrl}`}
 	>
 		<Content>
