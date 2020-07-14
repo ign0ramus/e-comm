@@ -84,7 +84,7 @@ const Checkout = ({ items, total }) => (
 			<br />
 			4242 4242 4242 4242 - Exp: 01/24 - CVV: 123
 		</TestWarning>
-		<StripeButton price={total} />
+		{total > 0 && <StripeButton price={total} />}
 	</CheckoutContainer>
 );
 
