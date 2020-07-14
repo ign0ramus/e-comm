@@ -6,3 +6,8 @@ export const selectSections = createSelector(
 	[selectDirectory],
 	(directory) => directory.sections
 );
+
+export const selectSectionsIsLoaded = createSelector(
+	[selectDirectory],
+	(directory) => !!directory.sections
+);
