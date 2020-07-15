@@ -9,20 +9,22 @@ import {
 	convertCollectionsSnapshotToMap,
 } from '../../firebase/firebase.utils';
 
-const fetchCollectionsStart = () => ({
+export const fetchCollectionsStart = () => ({
 	type: FETCH_COLLECTIONS_START,
 });
 
-const fetchCollectionsSuccess = (collections) => ({
+export const fetchCollectionsSuccess = (collections) => ({
 	type: FETCH_COLLECTIONS_SUCCESS,
 	payload: collections,
 });
 
-const fetchCollectionsFail = (errorMsg) => ({
+export const fetchCollectionsFail = (errorMsg) => ({
 	type: FETCH_COLLECTIONS_FAIL,
 	payload: errorMsg,
 });
 
+
+// Fetch function for redux-thunk
 export const fetchCollectionsStartAsync = () => (dispatch) => {
 	dispatch(fetchCollectionsStart());
 
