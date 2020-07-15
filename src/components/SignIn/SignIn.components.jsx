@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
 import FormInput from '../FormInput/FormInput.component';
 import Button from '../Button/Button.component';
-import { auth, signInWithGoogle } from '../../firebase/firebase.utils';
+import { googleSignInStart } from '../../redux/user/userActions';
 
 const SignInContainer = styled.div`
 	max-width: 380px;
@@ -30,13 +31,6 @@ class SignIn extends Component {
 
 	handleSubmit = async (e) => {
 		e.preventDefault();
-		const { email, password } = this.state;
-		try {
-			await auth.signInWithEmailAndPassword(email, password);
-			this.setState({ email: '', password: '' });
-		} catch (err) {
-			console.error(err);
-		}
 	};
 
 	handleChange = (e) => {
@@ -44,17 +38,9 @@ class SignIn extends Component {
 		this.setState({ [name]: value });
 	};
 
-	handleSumbitWithGoogle = async (e) => {
-		e.preventDefault();
-		try {
-			await signInWithGoogle();
-		} catch (err) {
-			console.error(err);
-		}
-	};
-
 	render() {
 		const { email, password } = this.state;
+		const { signInWithGoogle } = this.props;
 
 		return (
 			<SignInContainer>
@@ -80,7 +66,7 @@ class SignIn extends Component {
 					/>
 					<BtnContainer>
 						<Button type='submit'>Sign in</Button>
-						<Button isGoogle onClick={this.handleSumbitWithGoogle}>
+						<Button type='button' isGoogle onClick={signInWithGoogle}>
 							Sign in with Google
 						</Button>
 					</BtnContainer>
@@ -90,4 +76,8 @@ class SignIn extends Component {
 	}
 }
 
-export default SignIn;
+const mapDispatchToProps = (dispatch) => ({
+	signInWithGoogle: () => dispatch(googleSignInStart()),
+});
+
+export default connect(null, mapDispatchToProps)(SignIn);
