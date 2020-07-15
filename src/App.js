@@ -15,8 +15,7 @@ import './App.css';
 class App extends Component {
 	unsubscribeFromAuth = null;
 
-	componentDidMount() {
-	}
+	componentDidMount() {}
 
 	componentWillUnmount() {
 		// this.unsubscribeFromAuth();
@@ -46,7 +45,4 @@ const mapStateToProps = createStructuredSelector({
 	user: selectUser,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, null)(App);
