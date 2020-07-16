@@ -4,6 +4,7 @@ import {
 	SIGN_IN_SUCCESS,
 	SIGN_IN_FAIL,
 	EMAIL_SIGN_IN_START,
+	CHECK_USER_SESSION,
 } from './userTypes';
 
 export const setUser = (user) => ({
@@ -28,4 +29,8 @@ export const signInFail = (errMsg) => ({
 export const emailSignInStart = (emailAndPass) => ({
 	type: EMAIL_SIGN_IN_START,
 	payload: emailAndPass,
+});
+
+export const checkUserSession = () => ({
+	type: CHECK_USER_SESSION,
 });

@@ -10,15 +10,14 @@ import Auth from './pages/Auth/Auth.component';
 import Checkout from './pages/Checkout/Checkout.component';
 
 import { selectUser } from './redux/user/userSelectors';
+import { checkUserSession } from './redux/user/userActions';
 import './App.css';
 
 class App extends Component {
 	unsubscribeFromAuth = null;
 
-	componentDidMount() {}
-
-	componentWillUnmount() {
-		// this.unsubscribeFromAuth();
+	componentDidMount() {
+		this.props.checkUserSession();
 	}
 
 	render() {
@@ -45,4 +44,8 @@ const mapStateToProps = createStructuredSelector({
 	user: selectUser,
 });
 
-export default connect(mapStateToProps, null)(App);
+const mapDispatchToProps = (dispatch) => ({
+	checkUserSession: () => dispatch(checkUserSession()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
