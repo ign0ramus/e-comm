@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
 import { ReactComponent as Logo } from '../../assets/crown.svg';
@@ -36,34 +35,33 @@ const Options = styled.nav`
 const Option = styled(Link)`
 	padding: 10px 15px;
 `;
-const Header = ({ user, isCartHidden, signOut }) => (
-	<HeaderContainer>
-		<StyledLink to='/'>
-			<Logo />
-		</StyledLink>
-		<Options>
-			<Option to='/shop'>SHOP</Option>
-			<Option to='/contact'>CONTACT</Option>
-			{user ? (
-				<Option to='/auth' onClick={signOut}>
-					SIGN OUT
-				</Option>
-			) : (
-				<Option to='/auth'>SIGN IN</Option>
-			)}
-			<CartIcon />
-		</Options>
-		{isCartHidden ? null : <CartDropdown />}
-	</HeaderContainer>
-);
+const Header = () => {
+	const user = useSelector(selectUser);
+	const isCartHidden = useSelector(selectCartHidden);
+	const dispatch = useDispatch();
 
-const mapStateToProps = createStructuredSelector({
-	user: selectUser,
-	isCartHidden: selectCartHidden,
-});
+	const signOut = useCallback(() => dispatch(signOutStart()), [dispatch]);
 
-const mapDispatchToProps = (dispatch) => ({
-	signOut: () => dispatch(signOutStart()),
-});
+	return (
+		<HeaderContainer>
+			<StyledLink to='/'>
+				<Logo />
+			</StyledLink>
+			<Options>
+				<Option to='/shop'>SHOP</Option>
+				<Option to='/contact'>CONTACT</Option>
+				{user ? (
+					<Option to='/auth' onClick={signOut}>
+						SIGN OUT
+					</Option>
+				) : (
+					<Option to='/auth'>SIGN IN</Option>
+				)}
+				<CartIcon />
+			</Options>
+			{isCartHidden ? null : <CartDropdown />}
+		</HeaderContainer>
+	);
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;

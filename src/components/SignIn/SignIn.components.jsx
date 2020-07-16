@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import FormInput from '../FormInput/FormInput.component';
 import Button from '../Button/Button.component';
@@ -26,13 +26,18 @@ const BtnContainer = styled.div`
 	justify-content: space-between;
 `;
 
-const SignIn = ({ signInWithEmail, signInWithGoogle }) => {
+const SignIn = () => {
 	const [userCreds, setUserCreds] = useState({ email: '', password: '' });
+	const dispatch = useDispatch();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		signInWithEmail(userCreds.email, userCreds.password);
+		dispatch(emailSignInStart(userCreds.email, userCreds.password));
 	};
+
+	const signInWithGoogle = useCallback(() => {
+		dispatch(googleSignInStart());
+	}, [dispatch]);
 
 	const handleChange = (e) => {
 		const { value, name } = e.target;
@@ -72,10 +77,4 @@ const SignIn = ({ signInWithEmail, signInWithGoogle }) => {
 	);
 };
 
-const mapDispatchToProps = (dispatch) => ({
-	signInWithGoogle: () => dispatch(googleSignInStart()),
-	signInWithEmail: (email, password) =>
-		dispatch(emailSignInStart({ email, password })),
-});
-
-export default connect(null, mapDispatchToProps)(SignIn);
+export default SignIn;

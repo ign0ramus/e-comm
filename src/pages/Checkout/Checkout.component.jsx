@@ -1,6 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import {
@@ -54,43 +53,43 @@ const TestWarning = styled.div`
 	color: red;
 `;
 
-const Checkout = ({ items, total }) => (
-	<CheckoutContainer>
-		<Header>
-			<HeaderBlock>
-				<span>Product</span>
-			</HeaderBlock>
-			<HeaderBlock>
-				<span>Description</span>
-			</HeaderBlock>
-			<HeaderBlock>
-				<span>Quantity</span>
-			</HeaderBlock>
-			<HeaderBlock>
-				<span>Price</span>
-			</HeaderBlock>
-			<HeaderBlock>
-				<span>Remove</span>
-			</HeaderBlock>
-		</Header>
-		{items.map((item) => (
-			<CheckoutItem key={item.id} item={item} />
-		))}
-		<Total>
-			<span>TOTAL: ${total}</span>
-		</Total>
-		<TestWarning>
-			*Please use the following credit card for test payments*
-			<br />
-			4242 4242 4242 4242 - Exp: 01/24 - CVV: 123
-		</TestWarning>
-		{total > 0 && <StripeButton price={total} />}
-	</CheckoutContainer>
-);
+const Checkout = () => {
+	const items = useSelector(selectCartItems);
+	const total = useSelector(selectCartTotal);
 
-const mapStateToProps = createStructuredSelector({
-	items: selectCartItems,
-	total: selectCartTotal,
-});
+	return (
+		<CheckoutContainer>
+			<Header>
+				<HeaderBlock>
+					<span>Product</span>
+				</HeaderBlock>
+				<HeaderBlock>
+					<span>Description</span>
+				</HeaderBlock>
+				<HeaderBlock>
+					<span>Quantity</span>
+				</HeaderBlock>
+				<HeaderBlock>
+					<span>Price</span>
+				</HeaderBlock>
+				<HeaderBlock>
+					<span>Remove</span>
+				</HeaderBlock>
+			</Header>
+			{items.map((item) => (
+				<CheckoutItem key={item.id} item={item} />
+			))}
+			<Total>
+				<span>TOTAL: ${total}</span>
+			</Total>
+			<TestWarning>
+				*Please use the following credit card for test payments*
+				<br />
+				4242 4242 4242 4242 - Exp: 01/24 - CVV: 123
+			</TestWarning>
+			{total > 0 && <StripeButton price={total} />}
+		</CheckoutContainer>
+	);
+};
 
-export default connect(mapStateToProps)(Checkout);
+export default Checkout;

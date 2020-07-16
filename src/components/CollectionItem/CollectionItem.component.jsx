@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
 import Button from '../Button/Button.component';
@@ -58,8 +58,9 @@ const Price = styled.span`
 	width: 10%;
 `;
 
-const CollectionItem = ({ item, addItemToCart }) => {
+const CollectionItem = ({ item }) => {
 	const { imageUrl, name, price } = item;
+	const dispatch = useDispatch();
 
 	return (
 		<CollectionItemContainer>
@@ -68,15 +69,11 @@ const CollectionItem = ({ item, addItemToCart }) => {
 				<Name>{name}</Name>
 				<Price>${price}</Price>
 			</Footer>
-			<StyledButton onClick={() => addItemToCart(item)} inverted>
+			<StyledButton onClick={() => dispatch(addItemToCart(item))} inverted>
 				ADD TO CART
 			</StyledButton>
 		</CollectionItemContainer>
 	);
 };
 
-const mapDispatchToProps = (dispatch) => ({
-	addItemToCart: (item) => dispatch(addItemToCart(item)),
-});
-
-export default connect(null, mapDispatchToProps)(CollectionItem);
+export default CollectionItem;

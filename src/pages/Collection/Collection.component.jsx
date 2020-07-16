@@ -1,6 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { useParams } from 'react-router-dom';
 
 import { selectCollection } from '../../redux/shop/shopSelectors';
 import CollectionItem from '../../components/CollectionItem/CollectionItem.component';
@@ -25,7 +26,13 @@ const Items = styled.div`
 	grid-gap: 10px;
 `;
 
-const Collection = ({ collection }) => {
+const Collection = () => {
+	const { collectionId } = useParams();
+
+	const collection = useSelector((state) =>
+		selectCollection(collectionId)(state)
+	);
+
 	const { title, items } = collection;
 
 	return (
@@ -40,8 +47,4 @@ const Collection = ({ collection }) => {
 	);
 };
 
-const mapStateToProps = (state, ownProps) => ({
-	collection: selectCollection(ownProps.match.params.collectionId)(state),
-});
-
-export default connect(mapStateToProps)(Collection);
+export default Collection;

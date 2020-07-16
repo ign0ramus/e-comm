@@ -1,6 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import MenuItem from '../MenuItem/MenuItem.component';
@@ -14,20 +13,19 @@ const DirectoryMenu = styled.div`
 	justify-content: space-between;
 `;
 
-const Directory = ({ sections }) => (
-	<DirectoryMenu>
-		{sections.map(({ id, ...otherSectionProps }, idx) => (
-			<MenuItem
-				key={id}
-				{...otherSectionProps}
-				size={sections.length - idx <= 2 ? 'large' : ''}
-			/>
-		))}
-	</DirectoryMenu>
-);
+const Directory = () => {
+	const sections = useSelector(selectSections);
+	return (
+		<DirectoryMenu>
+			{sections.map(({ id, ...otherSectionProps }, idx) => (
+				<MenuItem
+					key={id}
+					{...otherSectionProps}
+					size={sections.length - idx <= 2 ? 'large' : ''}
+				/>
+			))}
+		</DirectoryMenu>
+	);
+};
 
-const mapStateToProps = createStructuredSelector({
-	sections: selectSections,
-});
-
-export default connect(mapStateToProps, null)(Directory);
+export default Directory;

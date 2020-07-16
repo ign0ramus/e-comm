@@ -1,16 +1,19 @@
 import React, { useEffect } from 'react';
-import { Route } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { Route, useRouteMatch } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import CollectionOverviewContainer from '../../components/CollectionsOverview/CollectionsOverview.container';
 import CollectionContainer from '../Collection/Collection.container';
 
 import { fetchCollectionsStart } from '../../redux/shop/shopActions';
 
-const Shop = ({ fetchCollections, match }) => {
+const Shop = () => {
+	const match = useRouteMatch();
+	const dispatch = useDispatch();
+
 	useEffect(() => {
-		fetchCollections();
-	}, [fetchCollections]);
+		dispatch(fetchCollectionsStart());
+	}, [dispatch]);
 
 	return (
 		<div>
@@ -28,8 +31,4 @@ const Shop = ({ fetchCollections, match }) => {
 	);
 };
 
-const mapDispatchToProps = (dispatch) => ({
-	fetchCollections: () => dispatch(fetchCollectionsStart()),
-});
-
-export default connect(null, mapDispatchToProps)(Shop);
+export default Shop;

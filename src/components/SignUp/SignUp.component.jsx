@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import FormInput from '../FormInput/FormInput.component';
 import Button from '../Button/Button.component';
@@ -18,12 +18,13 @@ const Title = styled.h2`
 	margin: 10px 0;
 `;
 
-const SignUp = ({ signUp }) => {
+const SignUp = () => {
 	const [userCreds, setUserCreds] = useState({
 		displayName: '',
 		email: '',
 		password: '',
 	});
+	const dispatch = useDispatch();
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -33,7 +34,7 @@ const SignUp = ({ signUp }) => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const { displayName, email, password } = userCreds;
-		signUp({ displayName, email, password });
+		dispatch(signUpStart({ displayName, email, password }));
 	};
 
 	return (
@@ -71,8 +72,4 @@ const SignUp = ({ signUp }) => {
 	);
 };
 
-const mapDispatchToProps = (dispatch) => ({
-	signUp: (signUpData) => dispatch(signUpStart(signUpData)),
-});
-
-export default connect(null, mapDispatchToProps)(SignUp);
+export default SignUp;

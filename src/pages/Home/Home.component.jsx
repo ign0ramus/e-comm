@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import DirectoryContainer from '../../components/Directory/Directory.container';
 import { fetchDirectoriesStart } from '../../redux/directory/directoryActions';
@@ -11,10 +11,12 @@ const HomepageContainer = styled.div`
 	align-items: center;
 `;
 
-const Home = ({ fetchDirectories }) => {
+const Home = () => {
+	const dispatch = useDispatch();
+
 	useEffect(() => {
-		fetchDirectories();
-	}, [fetchDirectories]);
+		dispatch(fetchDirectoriesStart());
+	}, [dispatch]);
 
 	return (
 		<HomepageContainer>
@@ -23,8 +25,4 @@ const Home = ({ fetchDirectories }) => {
 	);
 };
 
-const mapDispatchToProps = (dispatch) => ({
-	fetchDirectories: () => dispatch(fetchDirectoriesStart()),
-});
-
-export default connect(null, mapDispatchToProps)(Home);
+export default Home;

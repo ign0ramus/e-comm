@@ -1,6 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import { selectCollectionsForPreview } from '../../redux/shop/shopSelectors';
@@ -11,16 +10,16 @@ const OverviewContainer = styled.div`
 	flex-direction: column;
 `;
 
-const CollectionsOverview = ({ collections }) => (
-	<OverviewContainer>
-		{collections.map(({ id, title, items }) => (
-			<CollectionPreview key={id} title={title} items={items} />
-		))}
-	</OverviewContainer>
-);
+const CollectionsOverview = () => {
+	const collections = useSelector(selectCollectionsForPreview);
 
-const mapStateToProps = createStructuredSelector({
-	collections: selectCollectionsForPreview,
-});
+	return (
+		<OverviewContainer>
+			{collections.map(({ id, title, items }) => (
+				<CollectionPreview key={id} title={title} items={items} />
+			))}
+		</OverviewContainer>
+	);
+};
 
-export default connect(mapStateToProps)(CollectionsOverview);
+export default CollectionsOverview;

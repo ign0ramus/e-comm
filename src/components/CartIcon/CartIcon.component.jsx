@@ -1,6 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import { ReactComponent as Icon } from '../../assets/shopping-bag.svg';
@@ -29,19 +28,16 @@ const ItemCount = styled.span`
 	bottom: 12px;
 `;
 
-const CartIcon = ({ toggleCartHidden, itemsCount }) => (
-	<CartIconContainer onClick={toggleCartHidden}>
-		<StyledIcon />
-		<ItemCount>{itemsCount}</ItemCount>
-	</CartIconContainer>
-);
+const CartIcon = () => {
+	const itemsCount = useSelector(selectCartItemsCount);
+	const dispatch = useDispatch();
 
-const mapStateToProps = createStructuredSelector({
-	itemsCount: selectCartItemsCount,
-});
+	return (
+		<CartIconContainer onClick={() => dispatch(toggleCartHidden())}>
+			<StyledIcon />
+			<ItemCount>{itemsCount}</ItemCount>
+		</CartIconContainer>
+	);
+};
 
-const mapDispatchToProps = (dispatch) => ({
-	toggleCartHidden: () => dispatch(toggleCartHidden()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(CartIcon);
+export default CartIcon;
