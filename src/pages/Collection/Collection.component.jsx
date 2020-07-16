@@ -3,8 +3,13 @@ import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 
-import { selectCollection } from '../../redux/shop/shopSelectors';
+import {
+	selectCollection,
+	selectIsCollectionsLoaded,
+} from '../../redux/shop/shopSelectors';
+
 import CollectionItem from '../../components/CollectionItem/CollectionItem.component';
+import Spinner from '../../components/Spinner/Spinner.component';
 
 const StyledCollectionItem = styled(CollectionItem)`
 	margin-bottom: 30px;
@@ -28,18 +33,19 @@ const Items = styled.div`
 
 const Collection = () => {
 	const { collectionId } = useParams();
+	const isLoading = useSelector((state) => !selectIsCollectionsLoaded(state));
 
 	const collection = useSelector((state) =>
 		selectCollection(collectionId)(state)
 	);
 
-	const { title, items } = collection;
-
-	return (
+	return isLoading ? (
+		<Spinner />
+	) : (
 		<CollectionContainer>
-			<Title>{title}</Title>
+			<Title>{collection.title}</Title>
 			<Items>
-				{items.map((item) => (
+				{collection.items.map((item) => (
 					<StyledCollectionItem key={item.id} item={item} />
 				))}
 			</Items>

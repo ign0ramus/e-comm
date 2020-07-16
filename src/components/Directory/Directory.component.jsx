@@ -3,8 +3,12 @@ import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import MenuItem from '../MenuItem/MenuItem.component';
+import Spinner from '../Spinner/Spinner.component';
 
-import { selectSections } from '../../redux/directory/directorySelectors';
+import {
+	selectSections,
+	selectSectionsIsLoaded,
+} from '../../redux/directory/directorySelectors';
 
 const DirectoryMenu = styled.div`
 	width: 100%;
@@ -15,7 +19,11 @@ const DirectoryMenu = styled.div`
 
 const Directory = () => {
 	const sections = useSelector(selectSections);
-	return (
+	const isLoading = useSelector((state) => !selectSectionsIsLoaded(state));
+
+	return isLoading ? (
+		<Spinner />
+	) : (
 		<DirectoryMenu>
 			{sections.map(({ id, ...otherSectionProps }, idx) => (
 				<MenuItem

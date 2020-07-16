@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 
-import DirectoryContainer from '../../components/Directory/Directory.container';
+import Directory from '../../components/Directory/Directory.component';
 import { fetchDirectoriesStart } from '../../redux/directory/directoryActions';
 
 const HomepageContainer = styled.div`
@@ -20,7 +20,7 @@ const Home = () => {
 
 	return (
 		<HomepageContainer>
-			<DirectoryContainer />
+			<Directory />
 		</HomepageContainer>
 	);
 };
