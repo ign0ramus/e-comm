@@ -54,7 +54,7 @@ const SignIn = ({ signInWithEmail, signInWithGoogle }) => {
 					label='Email'
 				/>
 				<FormInput
-					onChange={this.handleChange}
+					onChange={handleChange}
 					name='password'
 					type='password'
 					value={userCreds.password}
