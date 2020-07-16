@@ -1,6 +1,6 @@
 import {
-	SIGN_IN_SUCCESS,
-	SIGN_IN_FAIL,
+	SIGN_IN_OR_SIGN_UP_SUCCESS,
+	SIGN_IN_OR_SIGN_UP_FAIL,
 	SIGN_OUT_SUCCESS,
 	SIGN_OUT_FAIL,
 } from './userTypes';
@@ -12,7 +12,7 @@ const INITIAL_STATE = {
 
 const userReducer = (state = INITIAL_STATE, action) => {
 	switch (action.type) {
-		case SIGN_IN_SUCCESS:
+		case SIGN_IN_OR_SIGN_UP_SUCCESS:
 			return {
 				...state,
 				user: action.payload,
@@ -24,7 +24,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
 				user: null,
 				error: null,
 			};
-		case SIGN_IN_FAIL:
+		case SIGN_IN_OR_SIGN_UP_FAIL:
 		case SIGN_OUT_FAIL:
 			return {
 				...state,

@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
-import { auth, createUserProfileDoc } from '../../firebase/firebase.utils';
 import FormInput from '../FormInput/FormInput.component';
 import Button from '../Button/Button.component';
+
+import { signUpStart } from '../../redux/user/userActions';
 
 const SignUpContainer = styled.div`
 	max-width: 380px;
@@ -16,33 +18,22 @@ const Title = styled.h2`
 	margin: 10px 0;
 `;
 
-const getInitialState = () => ({
-	displayName: '',
-	email: '',
-	password: '',
-});
-
 class SignUp extends Component {
-	state = getInitialState();
+	state = {
+		displayName: '',
+		email: '',
+		password: '',
+	};
 
 	handleChange = (e) => {
 		const { name, value } = e.target;
 		this.setState({ [name]: value });
 	};
 
-	handleSubmit = async (e) => {
+	handleSubmit = (e) => {
 		e.preventDefault();
 		const { displayName, email, password } = this.state;
-		try {
-			const { user } = await auth.createUserWithEmailAndPassword(
-				email,
-				password
-			);
-			await createUserProfileDoc(user, { displayName });
-			this.setState(getInitialState());
-		} catch (err) {
-			console.error(err);
-		}
+		this.props.signUp({ displayName, email, password });
 	};
 
 	render() {
@@ -73,7 +64,7 @@ class SignUp extends Component {
 						name='password'
 						value={password}
 						onChange={this.handleChange}
-						label='Display Name'
+						label='Password'
 						required
 					/>
 					<Button type='submit'>SIGN UP</Button>
@@ -83,4 +74,8 @@ class SignUp extends Component {
 	}
 }
 
-export default SignUp;
+const mapDispatchToProps = (dispatch) => ({
+	signUp: (signUpData) => dispatch(signUpStart(signUpData)),
+});
+
+export default connect(null, mapDispatchToProps)(SignUp);
