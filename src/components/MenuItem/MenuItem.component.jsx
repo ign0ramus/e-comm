@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { useRouteMatch, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Content = styled.div`
@@ -72,17 +72,20 @@ const Subtitle = styled.span`
 	font-size: 16px;
 `;
 
-const MenuItem = ({ title, imageUrl, size, linkUrl, match }) => (
-	<MenuItemContainer
-		size={size}
-		background={imageUrl}
-		to={`${match.url}shop/${linkUrl}`}
-	>
-		<Content>
-			<Title>{title}</Title>
-			<Subtitle>Shop now</Subtitle>
-		</Content>
-	</MenuItemContainer>
-);
+const MenuItem = ({ title, imageUrl, size, linkUrl }) => {
+	const match = useRouteMatch();
+	return (
+		<MenuItemContainer
+			size={size}
+			background={imageUrl}
+			to={`${match.url}shop/${linkUrl}`}
+		>
+			<Content>
+				<Title>{title}</Title>
+				<Subtitle>Shop now</Subtitle>
+			</Content>
+		</MenuItemContainer>
+	);
+};
 
-export default withRouter(MenuItem);
+export default MenuItem;

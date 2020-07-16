@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Button from '../Button/Button.component';
@@ -40,7 +40,9 @@ const Empty = styled.span`
 	margin: 50px auto;
 `;
 
-const CartDropdown = ({ items, history, toggleCartHidden }) => {
+const CartDropdown = ({ items, toggleCartHidden }) => {
+	const history = useHistory();
+
 	const handleClick = () => {
 		toggleCartHidden();
 		history.push('/checkout');
@@ -68,6 +70,4 @@ const mapDispatchToProps = (dispatch) => ({
 	toggleCartHidden: () => dispatch(toggleCartHidden()),
 });
 
-export default withRouter(
-	connect(mapStateToProps, mapDispatchToProps)(CartDropdown)
-);
+export default connect(mapStateToProps, mapDispatchToProps)(CartDropdown);
