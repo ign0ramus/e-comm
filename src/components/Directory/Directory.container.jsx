@@ -1,14 +1,17 @@
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-import { compose } from 'redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 import Directory from './Directory.component';
 import WithSpinner from '../../hocs/WithSpinner/WithSpinner.component';
 
 import { selectSectionsIsLoaded } from '../../redux/directory/directorySelectors';
 
-const mapStateToProps = createStructuredSelector({
-	isLoading: (state) => !selectSectionsIsLoaded(state),
-});
+const WithSpinnerDirectory = WithSpinner(Directory);
 
-export default compose(connect(mapStateToProps), WithSpinner)(Directory);
+const DirectoryContainer = (props) => {
+	const isLoading = useSelector((state) => !selectSectionsIsLoaded(state));
+
+	return <WithSpinnerDirectory {...props} isLoading={isLoading} />;
+};
+
+export default DirectoryContainer;

@@ -1,13 +1,16 @@
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { createStructuredSelector } from 'reselect';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 import { selectIsCollectionsLoaded } from '../../redux/shop/shopSelectors';
 import WithSpinner from '../../hocs/WithSpinner/WithSpinner.component';
 import Collection from './Collection.component';
 
-const mapStateToProps = createStructuredSelector({
-	isLoading: (state) => !selectIsCollectionsLoaded(state),
-});
+const WithSpinnerCollection = WithSpinner(Collection);
 
-export default compose(connect(mapStateToProps), WithSpinner)(Collection);
+const CollectionContainer = (props) => {
+	const isLoading = useSelector((state) => !selectIsCollectionsLoaded(state));
+
+	return <WithSpinnerCollection {...props} isLoading={isLoading} />;
+};
+
+export default CollectionContainer;
