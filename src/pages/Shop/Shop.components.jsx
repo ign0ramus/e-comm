@@ -13,7 +13,7 @@ const Shop = ({ fetchCollections, match }) => {
 	}, [fetchCollections]);
 
 	return (
-		<div className='shop'>
+		<div>
 			<Route
 				exact
 				path={`${match.path}`}
