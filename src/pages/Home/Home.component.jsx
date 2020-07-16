@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 
@@ -11,19 +11,17 @@ const HomepageContainer = styled.div`
 	align-items: center;
 `;
 
-class Home extends Component {
-	componentDidMount() {
-		this.props.fetchDirectories();
-	}
+const Home = ({ fetchDirectories }) => {
+	useEffect(() => {
+		fetchDirectories();
+	}, [fetchDirectories]);
 
-	render() {
-		return (
-			<HomepageContainer>
-				<DirectoryContainer />
-			</HomepageContainer>
-		);
-	}
-}
+	return (
+		<HomepageContainer>
+			<DirectoryContainer />
+		</HomepageContainer>
+	);
+};
 
 const mapDispatchToProps = (dispatch) => ({
 	fetchDirectories: () => dispatch(fetchDirectoriesStart()),
