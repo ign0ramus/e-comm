@@ -4,8 +4,14 @@ import {
 	GOOGLE_SIGN_IN_START,
 	EMAIL_SIGN_IN_START,
 	CHECK_USER_SESSION,
+	SIGN_OUT_START,
 } from './userTypes';
-import { signInSuccess, signInFail } from './userActions';
+import {
+	signInSuccess,
+	signInFail,
+	signOutSuccess,
+	signOutFail,
+} from './userActions';
 
 import {
 	googleProvider,
@@ -65,10 +71,24 @@ export function* watchCheckUserSession() {
 	yield takeLatest(CHECK_USER_SESSION, checkUserSession);
 }
 
+export function* signOut() {
+	try {
+		yield auth.signOut();
+		yield put(signOutSuccess());
+	} catch (err) {
+		yield put(signOutFail(err.message));
+	}
+}
+
+export function* watchSignOut() {
+	yield takeLatest(SIGN_OUT_START, signOut);
+}
+
 export function* userSagas() {
 	yield all([
 		call(watchGoogleSignInStart),
 		call(watchEmailSignInStart),
 		call(watchCheckUserSession),
+		call(watchSignOut),
 	]);
 }
