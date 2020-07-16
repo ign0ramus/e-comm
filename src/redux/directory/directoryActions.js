@@ -9,20 +9,22 @@ import {
 	convertDirectoriesSnapshotToArray,
 } from '../../firebase/firebase.utils';
 
-const fetchDirectoriesStart = () => ({
+export const fetchDirectoriesStart = () => ({
 	type: FETCH_DIRECTORIES_START,
 });
 
-const fetchDirectoriesSuccess = (directories) => ({
+export const fetchDirectoriesSuccess = (directories) => ({
 	type: FETCH_DIRECTORIES_SUCCESS,
 	payload: directories,
 });
 
-const fetchDirectoriesFail = (errorMsg) => ({
+export const fetchDirectoriesFail = (errorMsg) => ({
 	type: FETCH_DIRECTORIES_FAIL,
 	payload: errorMsg,
 });
 
+
+// Fetch function for redux-thunk
 export const fetchDirectoriesAsync = () => (dispatch) => {
 	dispatch(fetchDirectoriesStart());
 	const collectionRef = firestore.collection('directories');

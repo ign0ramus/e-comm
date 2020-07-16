@@ -28,6 +28,7 @@ const CartItems = styled.div`
 	display: flex;
 	flex-direction: column;
 	overflow-y: auto;
+	margin-bottom: 10px;
 
 	button {
 		margin-top: auto;

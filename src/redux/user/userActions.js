@@ -37,7 +37,7 @@ export const signOutStart = () => ({
 });
 
 export const signOutSuccess = () => ({
-	type: SIGN_IN_SUCCESS,
+	type: SIGN_OUT_SUCCESS,
 });
 
 export const signOutFail = (errMsg) => ({
