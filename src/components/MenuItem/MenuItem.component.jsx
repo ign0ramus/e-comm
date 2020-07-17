@@ -58,6 +58,10 @@ const MenuItemContainer = styled(Link)`
 			opacity: 0.9;
 		}
 	}
+
+	@media screen and (max-width: 800px) {
+		height: 200px;
+	}
 `;
 
 const Title = styled.h1`
