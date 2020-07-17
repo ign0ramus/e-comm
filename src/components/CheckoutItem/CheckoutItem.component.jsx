@@ -16,6 +16,10 @@ const CheckoutItemContainer = styled.div`
 	padding: 15px 0;
 	font-size: 20px;
 	align-items: center;
+
+	@media screen and (max-width: 800px) {
+		font-size: 16px;
+	}
 `;
 
 const ImageContainer = styled.div`
@@ -39,11 +43,16 @@ const quantityStyles = css`
 	span {
 		margin: 0 10px;
 	}
+
+	@media screen and (max-width: 800px) {
+		justify-content: center;
+		width: 30%;
+	}
 `;
 
 const CheckoutProp = styled.span`
 	width: 23%;
-	${(isQuantity) => isQuantity && quantityStyles}
+	${({ isQuantity }) => isQuantity && quantityStyles}
 `;
 
 const RemoveButton = styled.div`
@@ -66,7 +75,7 @@ const CheckoutItem = ({ item }) => {
 				<span>{quantity}</span>
 				<div onClick={() => dispatch(addItemToCart(item))}>&#10095;</div>
 			</CheckoutProp>
-			<CheckoutProp>{price}</CheckoutProp>
+			<CheckoutProp>${price}</CheckoutProp>
 			<RemoveButton onClick={() => dispatch(clearItemFromCart(item))}>
 				&#10005;
 			</RemoveButton>
