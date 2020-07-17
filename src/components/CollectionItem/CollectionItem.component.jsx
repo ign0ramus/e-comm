@@ -11,6 +11,13 @@ const StyledButton = styled(Button)`
 	position: absolute;
 	top: 255px;
 	visibility: hidden;
+
+	@media screen and (max-width: 800px) {
+		visibility: visible;
+		opacity: 0.9;
+		min-width: unset;
+		paddign: 0 10px;
+	}
 `;
 
 const Image = styled.img`
@@ -38,6 +45,16 @@ const CollectionItemContainer = styled.div`
 
 		${StyledButton} {
 			visibility: visible;
+		}
+	}
+
+	@media screen and (max-width: 800px) {
+		width: 40vw;
+
+		&:hover {
+			${Image} {
+				opacity: unset;
+			}
 		}
 	}
 `;
