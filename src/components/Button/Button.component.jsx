@@ -66,4 +66,4 @@ const Button = ({ children, ...restProps }) => {
 	return <CustomButton {...restProps}>{children}</CustomButton>;
 };
 
-export default Button;
+export default React.memo(Button);

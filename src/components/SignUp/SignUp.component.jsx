@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 
@@ -26,10 +26,10 @@ const SignUp = () => {
 	});
 	const dispatch = useDispatch();
 
-	const handleChange = (e) => {
+	const handleChange = useCallback((e) => {
 		const { name, value } = e.target;
-		setUserCreds({ ...userCreds, [name]: value });
-	};
+		setUserCreds((userCreds) => ({ ...userCreds, [name]: value }));
+	}, []);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();

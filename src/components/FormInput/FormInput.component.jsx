@@ -58,4 +58,4 @@ const FormInput = ({ onChange, label, ...restProps }) => (
 	</Group>
 );
 
-export default FormInput;
+export default React.memo(FormInput);

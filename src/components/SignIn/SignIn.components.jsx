@@ -47,10 +47,10 @@ const SignIn = () => {
 		dispatch(googleSignInStart());
 	}, [dispatch]);
 
-	const handleChange = (e) => {
+	const handleChange = useCallback((e) => {
 		const { value, name } = e.target;
-		setUserCreds({ ...userCreds, [name]: value });
-	};
+		setUserCreds((userCreds) => ({ ...userCreds, [name]: value }));
+	}, []);
 
 	return (
 		<SignInContainer>

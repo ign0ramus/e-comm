@@ -20,7 +20,7 @@ const Shop = () => {
 
 	return (
 		<div>
-			<Suspense fallback={Spinner}>
+			<Suspense fallback={<Spinner />}>
 				<Route exact path={`${match.path}`} component={CollectionOverview} />
 				<Route
 					exact
