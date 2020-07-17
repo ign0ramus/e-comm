@@ -11,20 +11,20 @@ import {
 const CheckoutItemContainer = styled.div`
 	width: 100%;
 	display: flex;
-	min-height: 100px;
+	min-height: 6.25rem;
 	border-bottom: 1px solid darkgrey;
-	padding: 15px 0;
-	font-size: 20px;
+	padding: 0.9rem 0;
+	font-size: 1.25rem;
 	align-items: center;
 
-	@media screen and (max-width: 800px) {
-		font-size: 16px;
+	@media screen and (max-width: 50rem) {
+		font-size: 1rem;
 	}
 `;
 
 const ImageContainer = styled.div`
 	width: 23%;
-	padding-right: 15px;
+	padding-right: 0.9rem;
 
 	img {
 		display: block;
@@ -41,10 +41,10 @@ const quantityStyles = css`
 	}
 
 	span {
-		margin: 0 10px;
+		margin: 0 0.6rem;
 	}
 
-	@media screen and (max-width: 800px) {
+	@media screen and (max-width: 50rem) {
 		justify-content: center;
 		width: 30%;
 	}
@@ -56,7 +56,7 @@ const CheckoutProp = styled.span`
 `;
 
 const RemoveButton = styled.div`
-	padding-left: 12px;
+	padding-left: 0.75rem;
 	cursor: pointer;
 `;
 

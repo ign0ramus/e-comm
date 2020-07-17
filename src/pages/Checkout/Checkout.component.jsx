@@ -15,21 +15,21 @@ const CheckoutContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin: 50px auto 0;
+	margin: 3.1rem auto 0;
 
 	button {
 		margin-left: auto;
-		margin-top: 50px;
+		margin-top: 3.1rem;
 	}
 
-	@media screen and (max-width: 800px) {
+	@media screen and (max-width: 50rem) {
 		width: 100%;
 	}
 `;
 
 const Header = styled.header`
 	width: 100%;
-	padding: 10px 0;
+	padding: 0.6rem 0;
 	display: flex;
 	justify-content: space-between;
 	border-bottom: 1px solid darkgrey;
@@ -43,7 +43,7 @@ const HeaderBlock = styled.div`
 		width: 8%;
 	}
 
-	@media screen and (max-width: 800px) {
+	@media screen and (max-width: 50rem) {
 		width: auto;
 
 		&:last-child {
@@ -53,23 +53,23 @@ const HeaderBlock = styled.div`
 `;
 
 const Total = styled.div`
-	margin-top: 30px;
+	margin-top: 1.9rem;
 	margin-left: auto;
-	font-size: 36px;
+	font-size: 2.25rem;
 
-	@media screen and (max-width: 800px) {
-		font-size: 28px;
+	@media screen and (max-width: 50rem) {
+		font-size: 1.75rem;
 	}
 `;
 
 const TestWarning = styled.div`
 	text-align: center;
-	margin-top: 40px;
-	font-size: 24px;
+	margin-top: 2.5rem;
+	font-size: 1.5rem;
 	color: red;
 
-	@media screen and (max-width: 800px) {
-		font-size: 18px;
+	@media screen and (max-width: 50rem) {
+		font-size: 1.1rem;
 	}
 `;
 

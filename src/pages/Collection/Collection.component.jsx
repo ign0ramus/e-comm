@@ -12,7 +12,7 @@ import CollectionItem from '../../components/CollectionItem/CollectionItem.compo
 import Spinner from '../../components/Spinner/Spinner.component';
 
 const StyledCollectionItem = styled(CollectionItem)`
-	margin-bottom: 30px;
+	margin-bottom: 1.9rem;
 `;
 
 const CollectionContainer = styled.div`
@@ -21,14 +21,14 @@ const CollectionContainer = styled.div`
 `;
 
 const Title = styled.h2`
-	font-size: 38px;
-	margin: 0 auto 30px;
+	font-size: 2.4rem;
+	margin: 0 auto 1.9rem;
 `;
 
 const Items = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
-	grid-gap: 10px;
+	grid-gap: 0.6rem;
 `;
 
 const Collection = () => {

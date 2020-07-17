@@ -10,15 +10,15 @@ import { toggleCartHidden } from '../../redux/cart/cartActions';
 
 const Dropdown = styled.div`
 	position: absolute;
-	width: 240px;
-	height: 340px;
+	width: 15rem;
+	height: 21.25rem;
 	display: flex;
 	flex-direction: column;
-	padding: 20px;
+	padding: 1.25rem;
 	border: 1px solid black;
 	background-color: white;
-	top: 90px;
-	right: 40px;
+	top: 5.6rem;
+	right: 2.5rem;
 	z-index: 5;
 `;
 
@@ -27,7 +27,7 @@ const CartItems = styled.div`
 	display: flex;
 	flex-direction: column;
 	overflow-y: auto;
-	margin-bottom: 10px;
+	margin-bottom: 0.6rem;
 
 	button {
 		margin-top: auto;
@@ -35,8 +35,8 @@ const CartItems = styled.div`
 `;
 
 const Empty = styled.span`
-	font-size: 18px;
-	margin: 50px auto;
+	font-size: 1.1rem;
+	margin: 3.1rem auto;
 `;
 
 const CartDropdown = () => {

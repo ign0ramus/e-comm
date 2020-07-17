@@ -6,16 +6,16 @@ import CollectionItem from '../CollectionItem/CollectionItem.component';
 const PreviewContainer = styled.div`
 	display: flex;
 	flex-direction: column;
-	margin-bottom: 30px;
+	margin-bottom: 1.9rem;
 
-	@media screen and (max-width: 800px) {
+	@media screen and (max-width: 50rem) {
 		align-items: center;
 	}
 `;
 
 const Title = styled.h1`
-	font-size: 28px;
-	margin-bottom: 25px;
+	font-size: 1.75rem;
+	margin-bottom: 1.6rem;
 	text-transform: uppercase;
 `;
 
@@ -23,10 +23,10 @@ const Preview = styled.div`
 	display: flex;
 	justify-content: space-between;
 
-	@media screen and (max-width: 800px) {
+	@media screen and (max-width: 50rem) {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-		grid-gap: 15px;
+		grid-gap: 0.9rem;
 	}
 `;
 

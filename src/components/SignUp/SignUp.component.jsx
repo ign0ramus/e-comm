@@ -8,14 +8,14 @@ import Button from '../Button/Button.component';
 import { signUpStart } from '../../redux/user/userActions';
 
 const SignUpContainer = styled.div`
-	max-width: 380px;
+	max-width: 23.75rem;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 `;
 
 const Title = styled.h2`
-	margin: 10px 0;
+	margin: 0.6rem 0;
 `;
 
 const SignUp = () => {

@@ -19,10 +19,10 @@ const GlobalStyles = createGlobalStyle`
 
 	body {
 		font-family: 'Open Sans Condensed', sans-serif;
-		padding: 20px 60px;
+		padding: 1.25rem 3.75rem;
 
-		@media screen and (max-width: 800px) {
-			padding: 10px;
+		@media screen and (max-width: 50rem) {
+			padding: 0.625rem;
 		}
 	}
 

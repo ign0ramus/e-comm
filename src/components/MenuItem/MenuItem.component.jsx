@@ -3,8 +3,8 @@ import { useRouteMatch, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Content = styled.div`
-	height: 90px;
-	padding: 0 25px;
+	height: 5.6rem;
+	padding: 0 1.6rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -19,10 +19,10 @@ const MenuItemContainer = styled(Link)`
 	min-width: 30%;
 	height: ${({ size }) => {
 		if (!size) {
-			return '240px';
+			return '15rem';
 		}
 		if (size === 'large') {
-			return '380px';
+			return '23.75rem';
 		}
 	}};
 	background-image: url(${({ background }) => background});
@@ -31,7 +31,7 @@ const MenuItemContainer = styled(Link)`
 	align-items: center;
 	justify-content: center;
 	border: 1px solid #000;
-	margin: 0 7.5px 15px;
+	margin: 0 0.5rem 0.9rem;
 	position: relative;
 	background-position: center center;
 	background-size: cover;
@@ -59,21 +59,21 @@ const MenuItemContainer = styled(Link)`
 		}
 	}
 
-	@media screen and (max-width: 800px) {
-		height: 200px;
+	@media screen and (max-width: 50rem) {
+		height: 12.5rem;
 	}
 `;
 
 const Title = styled.h1`
 	font-weight: bold;
-	margin-bottom: 6px;
-	font-size: 22px;
+	margin-bottom: 0.4rem;
+	font-size: 1.4rem;
 	color: #4a4a4a;
 `;
 
 const Subtitle = styled.span`
 	font-weight: lighter;
-	font-size: 16px;
+	font-size: 1rem;
 `;
 
 const MenuItem = ({ title, imageUrl, size, linkUrl }) => {

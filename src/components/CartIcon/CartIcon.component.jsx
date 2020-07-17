@@ -7,8 +7,8 @@ import { toggleCartHidden } from '../../redux/cart/cartActions.js';
 import { selectCartItemsCount } from '../../redux/cart/cartSelectors.js';
 
 const CartIconContainer = styled.div`
-	width: 45px;
-	height: 45px;
+	width: 2.8rem;
+	height: 2.8rem;
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -17,15 +17,15 @@ const CartIconContainer = styled.div`
 `;
 
 const StyledIcon = styled(Icon)`
-	width: 24px;
-	height: 24px;
+	width: 1.5rem;
+	height: 1.5rem;
 `;
 
 const ItemCount = styled.span`
 	position: absolute;
-	font-size: 10px;
+	font-size: 0.6rem;
 	font-weight: bold;
-	bottom: 12px;
+	bottom: 0.75rem;
 `;
 
 const CartIcon = () => {

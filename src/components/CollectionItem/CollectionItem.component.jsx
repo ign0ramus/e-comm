@@ -9,14 +9,14 @@ const StyledButton = styled(Button)`
 	width: 80%;
 	opacity: 0.7;
 	position: absolute;
-	top: 255px;
+	top: 15.9rem;
 	visibility: hidden;
 
-	@media screen and (max-width: 800px) {
+	@media screen and (max-width: 50rem) {
 		visibility: visible;
 		opacity: 0.9;
 		min-width: unset;
-		paddign: 0 10px;
+		paddign: 0 0.6rem;
 	}
 `;
 
@@ -26,17 +26,17 @@ const Image = styled.img`
 	height: 95%;
 	object-fit: cover;
 	object-position: center;
-	margin-bottom: 5px;
+	margin-bottom: 0.3rem;
 `;
 
 const CollectionItemContainer = styled.div`
 	width: 22vw;
 	display: flex;
 	flex-direction: column;
-	height: 350px;
+	height: 21.9rem;
 	align-items: center;
 	position: relative;
-	margin-bottom: 30px;
+	margin-bottom: 1.9rem;
 
 	&:hover {
 		${Image} {
@@ -48,7 +48,7 @@ const CollectionItemContainer = styled.div`
 		}
 	}
 
-	@media screen and (max-width: 800px) {
+	@media screen and (max-width: 50rem) {
 		width: 40vw;
 
 		&:hover {
@@ -63,12 +63,12 @@ const Footer = styled.div`
 	width: 100%;
 	display: flex;
 	justify-content: center;
-	font-size: 18px;
+	font-size: 1.1rem;
 `;
 
 const Name = styled.span`
 	width: 90%;
-	margin-bottom: 15px;
+	margin-bottom: 0.9rem;
 `;
 
 const Price = styled.span`

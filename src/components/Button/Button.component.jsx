@@ -44,13 +44,13 @@ const getButtonStyles = (props) => {
 };
 
 const CustomButton = styled.button`
-	min-width: 165px;
+	min-width: 10.3rem;
 	width: auto;
-	height: 50px;
+	height: 3.125rem;
 	letter-spacing: 0.5px;
-	line-height: 50px;
-	padding: 0 35px 0 35px;
-	font-size: 15px;
+	line-height: 3.125rem;
+	padding: 0 2.2rem 0 2.2rem;
+	font-size: 0.9rem;
 	text-transform: uppercase;
 	font-family: 'Open Sans Condensed';
 	font-weight: bolder;

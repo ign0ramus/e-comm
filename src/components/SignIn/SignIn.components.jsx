@@ -10,26 +10,26 @@ import {
 } from '../../redux/user/userActions';
 
 const SignInContainer = styled.div`
-	max-width: 380px;
+	max-width: 23.75rem;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-	margin-bottom: 30px;
+	margin-bottom: 1.9rem;
 `;
 
 const Title = styled.h1`
-	margin: 10px 0;
+	margin: 0.6rem 0;
 `;
 
 const BtnContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
 
-	@media screen and (max-width: 800px) {
+	@media screen and (max-width: 50rem) {
 		flex-direction: column;
 
 		button {
-			margin-bottom: 10px;
+			margin-bottom: 0.6rem;
 		}
 	}
 `;

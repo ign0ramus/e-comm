@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 const Group = styled.div`
 	position: relative;
-	margin: 45px 0;
+	margin: 2.8rem 0;
 
 	input[type='password'] {
 		letter-spacing: 0.3em;
@@ -11,19 +11,19 @@ const Group = styled.div`
 `;
 
 const shrinkLabelStyles = css`
-	top: -14px;
-	font-size: 12px;
+	top: -0.9rem;
+	font-size: 0.75rem;
 	color: black;
 `;
 
 const Label = styled.label`
 	color: grey;
-	font-size: 16px;
+	font-size: 1rem;
 	font-weight: normal;
 	position: absolute;
 	pointer-events: none;
-	left: 5px;
-	top: 10px;
+	left: 0.3rem;
+	top: 0.6rem;
 	transition: 300ms ease all;
 
 	${({ valueLength }) => valueLength && shrinkLabelStyles}
@@ -33,14 +33,14 @@ const Input = styled.input`
 	background: none;
 	background-color: white;
 	color: grey;
-	font-size: 18px;
-	padding: 10px 10px 10px 5px;
+	font-size: 1.1rem;
+	padding: 0.6rem 0.6rem 0.6rem 0.3rem;
 	display: block;
 	width: 100%;
 	border: none;
 	border-radius: 0;
 	border-bottom: 1px solid grey;
-	margin: 25px 0;
+	margin: 1.6rem 0;
 
 	&:focus {
 		outline: none;

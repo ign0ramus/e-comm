@@ -11,26 +11,26 @@ import { selectCartHidden } from '../../redux/cart/cartSelectors.js';
 import { signOutStart } from '../../redux/user/userActions';
 
 const HeaderContainer = styled.header`
-	height: 70px;
+	height: 4.4rem;
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
-	margin-bottom: 25px;
+	margin-bottom: 1.6rem;
 
-	@media screen and (max-width: 800px) {
-		height: 60px;
-		padding: 10px;
-		margin-bottom: 20px;
+	@media screen and (max-width: 50rem) {
+		height: 3.75rem;
+		padding: 0.6rem;
+		margin-bottom: 1.25rem;
 	}
 `;
 
 const LogoContainer = styled(Link)`
 	height: 100%;
-	width: 70px;
-	padding: 25px;
+	width: 4.4rem;
+	padding: 1.6rem;
 
-	@media screen and (max-width: 800px) {
-		width: 50px;
+	@media screen and (max-width: 50rem) {
+		width: 3.1rem;
 		padding: 0;
 	}
 `;
@@ -42,13 +42,13 @@ const Options = styled.nav`
 	align-items: center;
 	justify-content: flex-end;
 
-	@media screen and (max-width: 800px) {
+	@media screen and (max-width: 50rem) {
 		width: 80%;
 	}
 `;
 
 const Option = styled(Link)`
-	padding: 10px 15px;
+	padding: 0.6rem 0.9rem;
 `;
 
 const Header = () => {
