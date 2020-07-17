@@ -1,16 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { createGlobalStyle } from 'styled-components';
 
-import Home from './pages/Home/Home.component';
-import Shop from './pages/Shop/Shop.components';
 import Header from './components/Header/Header.component';
-import Auth from './pages/Auth/Auth.component';
-import Checkout from './pages/Checkout/Checkout.component';
+import Spinner from './components/Spinner/Spinner.component';
 
 import { selectUser } from './redux/user/userSelectors';
 import { checkUserSession } from './redux/user/userActions';
+
+const Home = lazy(() => import('./pages/Home/Home.component'));
+const Shop = lazy(() => import('./pages/Shop/Shop.components'));
+const Auth = lazy(() => import('./pages/Auth/Auth.component'));
+const Checkout = lazy(() => import('./pages/Checkout/Checkout.component'));
 
 const GlobalStyles = createGlobalStyle`
 	* {
@@ -45,14 +47,16 @@ const App = () => {
 			<GlobalStyles />
 			<Header />
 			<Switch>
-				<Route exact path='/' component={Home} />
-				<Route path='/shop' component={Shop} />
-				<Route exact path='/checkout' component={Checkout} />
-				<Route
-					exact
-					path='/auth'
-					render={() => (user ? <Redirect to='/' /> : <Auth />)}
-				/>
+				<Suspense fallback={Spinner}>
+					<Route exact path='/' component={Home} />
+					<Route path='/shop' component={Shop} />
+					<Route exact path='/checkout' component={Checkout} />
+					<Route
+						exact
+						path='/auth'
+						render={() => (user ? <Redirect to='/' /> : <Auth />)}
+					/>
+				</Suspense>
 			</Switch>
 		</div>
 	);
