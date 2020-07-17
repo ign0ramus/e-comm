@@ -24,6 +24,14 @@ const Title = styled.h1`
 const BtnContainer = styled.div`
 	display: flex;
 	justify-content: space-between;
+
+	@media screen and (max-width: 800px) {
+		flex-direction: column;
+
+		button {
+			margin-bottom: 10px;
+		}
+	}
 `;
 
 const SignIn = () => {
