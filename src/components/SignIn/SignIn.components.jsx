@@ -40,7 +40,9 @@ const SignIn = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		dispatch(emailSignInStart(userCreds.email, userCreds.password));
+		const { email, password } = userCreds;
+
+		dispatch(emailSignInStart({ email, password }));
 	};
 
 	const signInWithGoogle = useCallback(() => {
