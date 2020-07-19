@@ -4,7 +4,7 @@ import 'firebase/auth';
 
 const config = {
 	apiKey: 'AIzaSyDt540idOV6WLvQxj4tI_bIQL4ptPA5Um8',
-	authDomain: 'e-comm-react.herokuapp.com',
+	authDomain: 'e-comm-a5ffc.firebaseapp.com',
 	databaseURL: 'https://e-comm-a5ffc.firebaseio.com',
 	projectId: 'e-comm-a5ffc',
 	storageBucket: 'e-comm-a5ffc.appspot.com',
