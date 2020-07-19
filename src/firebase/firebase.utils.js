@@ -65,15 +65,18 @@ export const convertCollectionsSnapshotToMap = (collections) => {
 };
 
 export const convertDirectoriesSnapshotToArray = (directories) => {
-	const transformedDirectories = directories.docs.map((doc) => {
-		const { title, imageUrl } = doc.data();
-		return {
-			title,
-			imageUrl,
-			linkUrl: encodeURI(title.toLowerCase()),
-			id: doc.id,
-		};
-	});
+	const transformedDirectories = directories.docs
+		.map((doc) => {
+			const { title, imageUrl, order } = doc.data();
+			return {
+				title,
+				imageUrl,
+				linkUrl: encodeURI(title.toLowerCase()),
+				id: doc.id,
+				order,
+			};
+		})
+		.sort((a, b) => a.order - b.order);
 	return transformedDirectories;
 };
 
