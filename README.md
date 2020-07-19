@@ -1,5 +1,6 @@
 E-commerce SPA.<br>
-Backend: firebase
+Backend: 
+- Firebase (firestore, Google OAuth)
 
 Frontend:
 - React (hooks, etc.)
