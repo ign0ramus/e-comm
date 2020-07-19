@@ -49,7 +49,7 @@ const CustomButton = styled.button`
 	height: 3.125rem;
 	letter-spacing: 0.5px;
 	line-height: 3.125rem;
-	padding: 0 2.2rem 0 2.2rem;
+	padding: 0 2.2rem;
 	font-size: 0.9rem;
 	text-transform: uppercase;
 	font-family: 'Open Sans Condensed';
@@ -60,6 +60,10 @@ const CustomButton = styled.button`
 	justify-content: center;
 
 	${getButtonStyles}
+
+	@media screen and (max-width: 50rem) {
+		padding: 0 1rem;
+	}
 `;
 
 const Button = ({ children, ...restProps }) => {

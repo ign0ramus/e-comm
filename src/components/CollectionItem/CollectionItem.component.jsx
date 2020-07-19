@@ -71,10 +71,6 @@ const Name = styled.span`
 	margin-bottom: 0.9rem;
 `;
 
-const Price = styled.span`
-	width: 10%;
-`;
-
 const CollectionItem = ({ item }) => {
 	const { imageUrl, name, price } = item;
 	const dispatch = useDispatch();
@@ -84,7 +80,7 @@ const CollectionItem = ({ item }) => {
 			<Image src={imageUrl} alt={name} />
 			<Footer>
 				<Name>{name}</Name>
-				<Price>${price}</Price>
+				<div>${price}</div>
 			</Footer>
 			<StyledButton onClick={() => dispatch(addItemToCart(item))} inverted>
 				ADD TO CART
