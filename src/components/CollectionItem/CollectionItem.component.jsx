@@ -16,7 +16,7 @@ const StyledButton = styled(Button)`
 		visibility: visible;
 		opacity: 0.9;
 		min-width: unset;
-		paddign: 0 0.6rem;
+		padding: 0 0.6rem;
 	}
 `;
 

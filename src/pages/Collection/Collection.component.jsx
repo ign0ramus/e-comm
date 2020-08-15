@@ -11,13 +11,10 @@ import {
 import CollectionItem from '../../components/CollectionItem/CollectionItem.component';
 import Spinner from '../../components/Spinner/Spinner.component';
 
-const StyledCollectionItem = styled(CollectionItem)`
-	margin-bottom: 1.9rem;
-`;
-
 const CollectionContainer = styled.div`
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 `;
 
 const Title = styled.h2`
@@ -29,6 +26,11 @@ const Items = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	grid-gap: 0.6rem;
+
+	@media screen and (max-width: 50rem) {
+		grid-template-columns: 1fr 1fr;
+		grid-gap: 0.9rem;
+	}
 `;
 
 const Collection = () => {
@@ -46,7 +48,7 @@ const Collection = () => {
 			<Title>{collection.title}</Title>
 			<Items>
 				{collection.items.map((item) => (
-					<StyledCollectionItem key={item.id} item={item} />
+					<CollectionItem key={item.id} item={item} />
 				))}
 			</Items>
 		</CollectionContainer>
