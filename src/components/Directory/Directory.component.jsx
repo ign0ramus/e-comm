@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import MenuItem from '../MenuItem/MenuItem.component';
-import Spinner from '../Spinner/Spinner.component';
+import DirectoryPlaceholder from '../DirectoryPlaceholder/DirectoryPlaceholder.component';
 
 import {
 	selectSections,
@@ -22,7 +22,7 @@ const Directory = () => {
 	const isLoading = useSelector((state) => !selectSectionsIsLoaded(state));
 
 	return isLoading ? (
-		<Spinner />
+		<DirectoryPlaceholder />
 	) : (
 		<DirectoryMenu>
 			{sections.map(({ id, ...otherSectionProps }, idx) => (

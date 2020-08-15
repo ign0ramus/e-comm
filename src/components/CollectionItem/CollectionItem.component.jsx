@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
 import Button from '../Button/Button.component';
+import CollectionItemPlaceholder from '../CollectionItemPlaceholder/CollectionItemPlaceholder.component';
 import { addItemToCart } from '../../redux/cart/cartActions.js';
 
 const StyledButton = styled(Button)`
@@ -20,7 +21,7 @@ const StyledButton = styled(Button)`
 	}
 `;
 
-const Image = styled.img`
+const BackImage = styled.img`
 	display: block;
 	width: 100%;
 	height: 95%;
@@ -39,7 +40,7 @@ const CollectionItemContainer = styled.div`
 	margin-bottom: 1.9rem;
 
 	&:hover {
-		${Image} {
+		${BackImage} {
 			opacity: 0.8;
 		}
 
@@ -52,7 +53,7 @@ const CollectionItemContainer = styled.div`
 		width: 40vw;
 
 		&:hover {
-			${Image} {
+			${BackImage} {
 				opacity: unset;
 			}
 		}
@@ -73,11 +74,20 @@ const Name = styled.span`
 
 const CollectionItem = ({ item }) => {
 	const { imageUrl, name, price } = item;
+	const [image, setImage] = useState(null);
 	const dispatch = useDispatch();
 
-	return (
+	useEffect(() => {
+		const img = new Image();
+		img.onload = () => {
+			setImage(img);
+		};
+		img.src = imageUrl;
+	}, [imageUrl]);
+
+	return image ? (
 		<CollectionItemContainer>
-			<Image src={imageUrl} alt={name} />
+			<BackImage src={imageUrl} alt={name} />
 			<Footer>
 				<Name>{name}</Name>
 				<div>${price}</div>
@@ -86,6 +96,8 @@ const CollectionItem = ({ item }) => {
 				ADD TO CART
 			</StyledButton>
 		</CollectionItemContainer>
+	) : (
+		<CollectionItemPlaceholder />
 	);
 };
 

@@ -9,7 +9,7 @@ import {
 } from '../../redux/shop/shopSelectors';
 
 import CollectionItem from '../../components/CollectionItem/CollectionItem.component';
-import Spinner from '../../components/Spinner/Spinner.component';
+import CollectionPlaceholder from '../../components/CollectionPlaceholder/CollectionPlaceholder.component';
 
 const CollectionContainer = styled.div`
 	display: flex;
@@ -42,7 +42,7 @@ const Collection = () => {
 	);
 
 	return isLoading ? (
-		<Spinner />
+		<CollectionPlaceholder />
 	) : (
 		<CollectionContainer>
 			<Title>{collection.title}</Title>

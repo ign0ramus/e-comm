@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouteMatch, Link } from 'react-router-dom';
 import styled from 'styled-components';
+
+import MenuItemPlaceholder from '../MenuItemPlaceholder/MenuItemPlaceholder.component';
 
 const Content = styled.div`
 	height: 5.6rem;
@@ -16,17 +18,13 @@ const Content = styled.div`
 `;
 
 const MenuItemContainer = styled(Link)`
-	min-width: 30%;
-	height: ${({ size }) => {
-		if (!size) {
-			return '15rem';
-		}
-		if (size === 'large') {
+	height: ${({ $isLarge }) => {
+		if ($isLarge) {
 			return '23.75rem';
 		}
+		return '15rem';
 	}};
-	background-image: url(${({ background }) => background});
-	flex: 1 1 auto;
+	flex: 1 1 30%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -78,10 +76,22 @@ const Subtitle = styled.span`
 
 const MenuItem = ({ title, imageUrl, size, linkUrl }) => {
 	const match = useRouteMatch();
-	return (
+	const [image, setImage] = useState(null);
+
+	useEffect(() => {
+		const img = new Image();
+		img.onload = () => {
+			setImage(img);
+		};
+		img.src = imageUrl;
+	}, [imageUrl]);
+
+	const isLarge = size === 'large';
+
+	return image ? (
 		<MenuItemContainer
-			size={size}
-			background={imageUrl}
+			style={{ backgroundImage: `url(${image.src})` }}
+			$isLarge={isLarge}
 			to={`${match.url}shop/${linkUrl}`}
 		>
 			<Content>
@@ -89,6 +99,10 @@ const MenuItem = ({ title, imageUrl, size, linkUrl }) => {
 				<Subtitle>Shop now</Subtitle>
 			</Content>
 		</MenuItemContainer>
+	) : (
+		<MenuItemPlaceholder
+			isLarge={isLarge}
+		/>
 	);
 };
 

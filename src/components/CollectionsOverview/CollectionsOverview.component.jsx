@@ -8,7 +8,7 @@ import {
 } from '../../redux/shop/shopSelectors';
 
 import CollectionPreview from '../CollectionPreview/CollectionPreview.component';
-import Spinner from '../Spinner/Spinner.component';
+import CollectionOverviewPlaceholder from '../CollectionOverviewPlaceholder/CollectionOverviewPlaceholder.component';
 
 const OverviewContainer = styled.div`
 	display: flex;
@@ -20,7 +20,7 @@ const CollectionsOverview = () => {
 	const isLoading = useSelector(selectCollectionsFetching);
 
 	return isLoading ? (
-		<Spinner />
+		<CollectionOverviewPlaceholder />
 	) : (
 		<OverviewContainer>
 			{collections.map(({ id, title, items }) => (
