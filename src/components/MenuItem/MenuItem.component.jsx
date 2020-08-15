@@ -57,8 +57,8 @@ const MenuItemContainer = styled(Link)`
 		}
 	}
 
-	@media screen and (max-width: 50rem) {
-		height: 12.5rem;
+	@media screen and (max-width: 32.2rem) {
+		height: 15rem;
 	}
 `;
 
@@ -100,9 +100,7 @@ const MenuItem = ({ title, imageUrl, size, linkUrl }) => {
 			</Content>
 		</MenuItemContainer>
 	) : (
-		<MenuItemPlaceholder
-			isLarge={isLarge}
-		/>
+		<MenuItemPlaceholder isLarge={isLarge} />
 	);
 };
 

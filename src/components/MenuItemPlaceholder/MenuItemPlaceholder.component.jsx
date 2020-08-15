@@ -5,13 +5,12 @@ import styled from 'styled-components';
 const StyledContentLoader = styled(({ isLarge, ...rest }) => (
 	<ContentLoader {...rest} />
 ))`
-	min-width: 30%;
-	flex: 1 1 auto;
+	flex: 1 1 30%;
 	margin: 0 0.5rem 0.9rem;
 	height: ${({ isLarge }) => (isLarge ? '23.75rem' : '15rem')};
 
-	@media screen and (max-width: 50rem) {
-		height: 12.5rem;
+	@media screen and (max-width: 32.2rem) {
+		height: 15rem;
 	}
 `;
 
